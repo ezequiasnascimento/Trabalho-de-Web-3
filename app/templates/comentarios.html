@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if comentarios %}
+{% for comentario in comentarios %}
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"> {{comentario.nome_usuario}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted"> Nota:  {{comentario.nota}}</h6>
+        <p class="text-muted" style="margin-bottom: 5px;"> Descrição:</p>
+        <p class="card-text">
+            {{comentario.corpo}}
+        </p>
+
+        <p><a href="{{ url_for('editar_comentario', id=id, id2=comentario.id) }}">Editar</a></p>
+        <p><a href="{{ url_for('excluir_comentario', id=id, id2=comentario.id) }}">Excluir</a></p>
+    </div>
+</div>
+
+
+{% endfor %}
+{% endif %}
+
+{% endblock %}

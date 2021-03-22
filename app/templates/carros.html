@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="page-header">
+        <h1>{{ carros|length }} carros encontrados</h1>
+        <a href="{{ url_for('sair') }}">Sair da conta </a>
+
+        
+    </div>
+    {% if carros %}
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Modelo</th>
+            <th>Cor</th>
+            <th>Ano</th>
+            <th>Comentarios</th>
+        </tr>
+        {% for carro in carros %}
+        <tr>
+            <td>{{ carro.id }}</td>
+            <td>{{ carro.modelo }}</td>
+            <td>{{ carro.cor }}</td>
+            <td>{{ carro.ano }}</td>
+            <td>
+                <a href="{{ url_for('novo_comentario', id=carro.id) }}">Novo</a> <br>
+                <a href="{{ url_for('comentarios', id=carro.id) }}">Mostrar</a>
+
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

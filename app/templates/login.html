@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Login</h1>
+
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.nome_usuario.label }}<br>
+        {{ form.nome_usuario(class="form-control form-control-lg rounded-0") }}
+    </p>
+
+    <p>
+        {{ form.senha.label }}<br>
+        {{ form.senha(class="form-control form-control-lg rounded-0") }}
+    </p>
+    
+    <a href="{{url_for('signup')}}" class="card-link">Novo por aqui? Cadastre-se</a>
+    
+
+    {{form.submit(class="btn")}}
+</form>
+    
+
+
+{% endblock %}
